@@ -5,7 +5,7 @@ import express, { response } from "express";
 const app = express();
 const port = 3000;
 const API_URL = "https://api.giphy.com/v1/gifs";
-const myAPIKey = "2Nd6bAJpvqK7zX53YnsCJZe9IL82jM3Z";
+const myAPIKey = "YOUR API KEY FROM GIPHY";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
