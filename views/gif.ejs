@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gif Results</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <div class="main-cont">
+        <svg id="shadow1" width="470" height="460" viewBox="0 0 470 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_f_399_15)">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M89.1032 -138.365C145.963 -136.547 214.337 -157.011 251.444 -113.938C288.139 -71.343 260.979 -6.86178 249.848 48.2217C241.613 88.9718 222.061 122.786 196.912 155.91C165.525 197.25 140.99 262.319 89.1032 259.936C37.0889 257.548 19.0767 190.098 -9.22952 146.444C-29.1535 115.717 -38.4465 83.5166 -48.1775 48.2217C-64.4389 -10.759 -120.245 -75.3678 -83.9758 -124.663C-48.3471 -173.089 28.9702 -140.288 89.1032 -138.365Z"
+                    fill="#FF4191" />
+            </g>
+            <defs>
+                <filter id="filter0_f_399_15" x="-296" y="-351" width="766" height="811" filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                    <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_399_15" />
+                </filter>
+            </defs>
+        </svg>
+        <svg id="shadow2" width="343" height="640" viewBox="0 0 343 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_f_399_14)">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M308.23 207.378C341.476 208.44 381.454 196.49 403.15 221.642C424.606 246.515 408.726 284.168 402.217 316.334C397.402 340.13 385.97 359.875 371.266 379.218C352.914 403.358 338.568 441.354 308.23 439.963C277.817 438.568 267.285 399.181 250.735 373.69C239.085 355.747 233.652 336.944 227.962 316.334C218.454 281.893 185.824 244.165 207.031 215.379C227.863 187.102 273.07 206.255 308.23 207.378Z"
+                    fill="#FFF078" />
+            </g>
+            <defs>
+                <filter id="filter0_f_399_14" x="0" y="0" width="614" height="640" filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                    <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_399_14" />
+                </filter>
+            </defs>
+        </svg>
+        <div class="search-cont-get">
+            <form id="gif-search" method="post">
+                <div class="searchbar-cont">
+                    <input type="text" name="gifsearch" id="searchbar" onkeydown="myFunction()" placeholder="Search...">
+                    <button type="submit" formaction="/get-gif" id="submit-button"><svg width="34" height="34" viewBox="0 0 34 34"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M31.3556 34L19.4556 22.1C18.5111 22.8556 17.425 23.4537 16.1972 23.8944C14.9694 24.3352 13.663 24.5556 12.2778 24.5556C8.8463 24.5556 5.94245 23.3668 3.56622 20.9893C1.19 18.6119 0.00126026 15.708 9.99412e-07 12.2778C-0.00125826 8.84756 1.18748 5.9437 3.56622 3.56622C5.94496 1.18874 8.84881 0 12.2778 0C15.7067 0 18.6112 1.18874 20.9912 3.56622C23.3712 5.9437 24.5593 8.84756 24.5556 12.2778C24.5556 13.663 24.3352 14.9694 23.8944 16.1972C23.4537 17.425 22.8556 18.5111 22.1 19.4556L34 31.3556L31.3556 34ZM12.2778 20.7778C14.6389 20.7778 16.6461 19.9517 18.2996 18.2996C19.953 16.6474 20.779 14.6401 20.7778 12.2778C20.7765 9.91541 19.9504 7.90878 18.2996 6.25789C16.6487 4.607 14.6414 3.7803 12.2778 3.77778C9.91415 3.77526 7.90752 4.60196 6.25789 6.25789C4.60826 7.91382 3.78156 9.92044 3.77778 12.2778C3.774 14.6351 4.6007 16.6424 6.25789 18.2996C7.91508 19.9567 9.9217 20.7828 12.2778 20.7778Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="trending-gif">
+            <% locals.content.forEach(gif=> { %>
+                <div class="gifs">
+                    <h3>
+                        <%= gif.title %>
+                    </h3>
+                    <img src="<%= gif.images.original.url %>" alt="<%= gif.title %>">
+                </div>
+                <% }); %>
+        </div>
+    </div>
+    <script>
+        function myFunction(){
+            document.addEventListener("keypress", (e) => {
+                console.log(e.key);
+                if(e.key === "Enter"){
+                    console.log("clicked");
+                    document.querySelector("#submit-button").click();
+                }
+            });
+            // document.querySelector("#submit-button").click();
+        }
+    </script>
+</body>
+
+</html>
